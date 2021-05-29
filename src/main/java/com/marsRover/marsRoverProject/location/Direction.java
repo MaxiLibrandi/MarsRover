@@ -12,7 +12,7 @@ public enum Direction {
 		this.representativeChar = representativeChar;
 	}
 	
-	private char getRepresentativeChar() {
+	public char getRepresentativeChar() {
 		return representativeChar;
 	}
 	

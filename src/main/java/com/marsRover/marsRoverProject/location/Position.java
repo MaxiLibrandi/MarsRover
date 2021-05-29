@@ -9,6 +9,10 @@ public class Position {
 		compassDirection = Direction.getDirection(direction);
 	}
 	
+	public String getStringPosition() {
+		return coordinates.getCoordX() + " " + coordinates.getCoordY() + " " + compassDirection.getRepresentativeChar();
+	}
+	
 	public int getCoordX() {
 		return coordinates.getCoordX();
 	}
