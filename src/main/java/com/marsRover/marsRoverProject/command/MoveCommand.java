@@ -1,6 +1,9 @@
 package com.marsRover.marsRoverProject.command;
 
+import com.marsRover.marsRoverProject.Plateau;
 import com.marsRover.marsRoverProject.Rover;
+import com.marsRover.marsRoverProject.exception.GridBusyByOtherRoverException;
+import com.marsRover.marsRoverProject.exception.RoverOutOfPlateauException;
 
 public class MoveCommand implements ICommand {
 
@@ -9,19 +12,45 @@ public class MoveCommand implements ICommand {
 	}
 	
 	@Override
-	public void execute(Rover roverInMovement) {
+	public void execute(Rover roverInMovement, Plateau currentPlateauState) throws RoverOutOfPlateauException, GridBusyByOtherRoverException {
+		int currentRoverCoordX = roverInMovement.getCoordX();
+		int currentRoverCoordY = roverInMovement.getCoordY();
 		switch (roverInMovement.getDirection()) {
 		case NORTH:
-			roverInMovement.setCoordY(roverInMovement.getCoordY()+1);
+			if (!currentPlateauState.isMovementInsidePlateau(currentRoverCoordX, currentRoverCoordY+1)) {
+				throw new RoverOutOfPlateauException();	
+			}
+			if (currentPlateauState.isGridBusy(currentRoverCoordX, currentRoverCoordY+1)) {
+				throw new GridBusyByOtherRoverException();
+			}
+			roverInMovement.setCoordY(currentRoverCoordY+1);
 			break;
 		case WEST:
-			roverInMovement.setCoordX(roverInMovement.getCoordX()-1);
+			if (!currentPlateauState.isMovementInsidePlateau(currentRoverCoordX-1, currentRoverCoordY)) {
+				throw new RoverOutOfPlateauException();
+			}
+			if (currentPlateauState.isGridBusy(currentRoverCoordX-1, currentRoverCoordY)) {
+				throw new GridBusyByOtherRoverException();
+			}
+			roverInMovement.setCoordX(currentRoverCoordX-1);
 			break;
 		case SOUTH:
-			roverInMovement.setCoordY(roverInMovement.getCoordY()-1);
+			if (!currentPlateauState.isMovementInsidePlateau(currentRoverCoordX, currentRoverCoordY-1)) {
+				throw new RoverOutOfPlateauException();
+			}
+			if (currentPlateauState.isGridBusy(currentRoverCoordX, currentRoverCoordY-1)) {
+				throw new GridBusyByOtherRoverException();
+			}
+			roverInMovement.setCoordY(currentRoverCoordY-1);
 			break;
 		case EAST:
-			roverInMovement.setCoordX(roverInMovement.getCoordX()+1);
+			if (!currentPlateauState.isMovementInsidePlateau(currentRoverCoordX+1, currentRoverCoordY)) {
+				throw new RoverOutOfPlateauException();
+			}
+			if (currentPlateauState.isGridBusy(currentRoverCoordX+1, currentRoverCoordY)) {
+				throw new GridBusyByOtherRoverException();
+			}
+			roverInMovement.setCoordX(currentRoverCoordX+1);
 			break;
 		}
 	}

@@ -1,5 +1,6 @@
 package com.marsRover.marsRoverProject.command;
 
+import com.marsRover.marsRoverProject.Plateau;
 import com.marsRover.marsRoverProject.Rover;
 import com.marsRover.marsRoverProject.location.Direction;
 
@@ -10,7 +11,7 @@ public class TurnLeftCommand implements ICommand {
 	}
 	
 	@Override
-	public void execute(Rover roverInMovement) {
+	public void execute(Rover roverInMovement, Plateau currentPlateauState) {
 		switch (roverInMovement.getDirection()) {
 		case NORTH:
 			roverInMovement.setDirection(Direction.WEST.getRepresentativeChar());

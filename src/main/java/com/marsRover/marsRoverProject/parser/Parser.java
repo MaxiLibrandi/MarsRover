@@ -11,14 +11,14 @@ import org.apache.logging.log4j.Logger;
 public class Parser {
 	private final static Logger LOGGER = LogManager.getLogger(Parser.class);
 	private String filename;
-	private String fileContent;
 	
 	public Parser(String filename) {
 		this.filename = filename;
 	}
 	
-	public void readFile() {
+	public String readFile() {
 		BufferedReader bufferedReader = null;
+		String fileContent = null;
 		try {
 			bufferedReader = new BufferedReader(new FileReader(filename));
 		    StringBuilder stringBuilder = new StringBuilder();
@@ -40,9 +40,6 @@ public class Parser {
 				LOGGER.error(e);
 			}
 		}
-	}
-	
-	public String getFileContent() {
 		return fileContent;
 	}
 }

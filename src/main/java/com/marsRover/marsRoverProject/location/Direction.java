@@ -17,14 +17,18 @@ public enum Direction {
 	}
 	
 	public static Direction getDirection(char representativeChar) {
-		if (representativeChar == Direction.NORTH.getRepresentativeChar()) 
+		if (representativeChar == Direction.NORTH.getRepresentativeChar()) {
 			return Direction.NORTH;
-		if (representativeChar == Direction.WEST.getRepresentativeChar()) 
+		}
+		if (representativeChar == Direction.WEST.getRepresentativeChar()) {
 			return Direction.WEST;
-		if (representativeChar == Direction.SOUTH.getRepresentativeChar()) 
+		}
+		if (representativeChar == Direction.SOUTH.getRepresentativeChar()) {
 			return Direction.SOUTH;
-		if (representativeChar == Direction.EAST.getRepresentativeChar()) 
+		}
+		if (representativeChar == Direction.EAST.getRepresentativeChar()) {
 			return Direction.EAST;
+		}
 		return null;
 	}
 }

@@ -1,10 +1,19 @@
 package com.marsRover.marsRoverProject.location;
 
+import com.marsRover.marsRoverProject.exception.InvalidRoverStartingDirectionException;
+import com.marsRover.marsRoverProject.exception.InvalidRoverStartingPositionException;
+
 public class Position {
 	private Coordinate coordinates;
 	private Direction compassDirection;
 	
-	public Position(int coordX, int coordY, char direction) {
+	public Position(int coordX, int coordY, char direction) throws InvalidRoverStartingPositionException, InvalidRoverStartingDirectionException {
+		if (coordX < 0 || coordY < 0) {
+			throw new InvalidRoverStartingPositionException();
+		}
+		if (Direction.getDirection(direction) == null) {
+			throw new InvalidRoverStartingDirectionException();
+		}
 		coordinates = new Coordinate(coordX, coordY);
 		compassDirection = Direction.getDirection(direction);
 	}
