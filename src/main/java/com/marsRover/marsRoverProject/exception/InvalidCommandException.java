@@ -1,8 +1,14 @@
 package com.marsRover.marsRoverProject.exception;
 
 public class InvalidCommandException extends Exception {
-
-	public InvalidCommandException() {
-		// TODO Auto-generated constructor stub
+	private String message; 
+	
+	public InvalidCommandException(String message) {
+		this.message = message;
+	}
+	
+	@Override
+	public String getMessage() {
+		return message;
 	}
 }

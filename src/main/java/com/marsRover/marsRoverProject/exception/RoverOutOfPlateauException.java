@@ -1,8 +1,14 @@
 package com.marsRover.marsRoverProject.exception;
 
 public class RoverOutOfPlateauException extends Exception {
-
-	public RoverOutOfPlateauException() {
-		// TODO Auto-generated constructor stub
+	private String message; 
+	
+	public RoverOutOfPlateauException(String message) {
+		this.message = message;
+	}
+	
+	@Override
+	public String getMessage() {
+		return message;
 	}
 }

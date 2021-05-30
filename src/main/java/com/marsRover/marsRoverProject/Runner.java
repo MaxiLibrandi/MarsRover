@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.StringReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import com.marsRover.marsRoverProject.command.CommandProducer;
 import com.marsRover.marsRoverProject.exception.GridBusyByOtherRoverException;
 import com.marsRover.marsRoverProject.exception.InvalidCommandException;
 import com.marsRover.marsRoverProject.exception.InvalidPlateauSizeException;
@@ -25,20 +23,20 @@ private final static Logger LOGGER = LogManager.getLogger(Runner.class);
 		String inputFilePath = "src/main/resources/input.txt";
 		Parser inputParser = new Parser(inputFilePath);
 		BufferedReader bufferedReader = new BufferedReader(new StringReader(inputParser.readFile()));
+		
 		try {
 			String line = bufferedReader.readLine();
-			LOGGER.info("Plateau size is " + line);
 			Plateau mars = new Plateau(line.split(" ")[0], line.split(" ")[1]);
+			LOGGER.info(mars.toString());
 			int roverId = 1;
 			while ((line = bufferedReader.readLine()) != null) {
 				Rover rover = new Rover(roverId++,line.split(" ")[0], line.split(" ")[1], line.split(" ")[2]);
 				line = bufferedReader.readLine();
-				rover.addCommands(CommandProducer.produceCommands(line));
+				rover.setCommandSequence(line);
 				mars.addRover(rover);
 				LOGGER.info(rover.toString());
-				LOGGER.info("Commands: " + line);
 				rover.move(mars);
-				LOGGER.info(rover.getStringPosition());
+				LOGGER.info(rover.toString());
 			}
 		} catch (IOException e) {
 			LOGGER.error(e);
@@ -48,15 +46,13 @@ private final static Logger LOGGER = LogManager.getLogger(Runner.class);
 			LOGGER.error(e);
 		} catch (InvalidRoverStartingDirectionException e) {
 			LOGGER.error(e);
-		} catch (InvalidCommandException e) {
+		}catch (InvalidCommandException e) {
 			LOGGER.error(e);
 		} catch (RoverOutOfPlateauException e) {
 			LOGGER.error(e);
 		} catch (GridBusyByOtherRoverException e) {
 			LOGGER.error(e);
-		}
-		
-		
+		} 	
 	}
 
 }

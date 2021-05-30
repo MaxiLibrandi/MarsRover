@@ -9,10 +9,10 @@ public class Position {
 	
 	public Position(int coordX, int coordY, char direction) throws InvalidRoverStartingPositionException, InvalidRoverStartingDirectionException {
 		if (coordX < 0 || coordY < 0) {
-			throw new InvalidRoverStartingPositionException();
+			throw new InvalidRoverStartingPositionException(coordX + " " + coordY + " is a non-valid starting position");
 		}
 		if (Direction.getDirection(direction) == null) {
-			throw new InvalidRoverStartingDirectionException();
+			throw new InvalidRoverStartingDirectionException(direction + " is a non-valid direction");
 		}
 		coordinates = new Coordinate(coordX, coordY);
 		compassDirection = Direction.getDirection(direction);

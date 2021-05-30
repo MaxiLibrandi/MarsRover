@@ -16,7 +16,7 @@ public class Plateau {
 		int sizeX = Integer.parseInt(inputSizeX);
 		int sizeY = Integer.parseInt(inputSizeY);
 		if (sizeX < 0 || sizeY < 0) {
-			throw new InvalidPlateauSizeException();
+			throw new InvalidPlateauSizeException(sizeX + " " + sizeY + " is a non-valid size for the Plateau");
 		}
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
@@ -25,10 +25,10 @@ public class Plateau {
 	
 	public void addRover(Rover newRover) throws RoverOutOfPlateauException, GridBusyByOtherRoverException {
 		if (newRover.getCoordX() > this.getSizeX() || newRover.getCoordY() > this.getSizeY()) {
-			throw new RoverOutOfPlateauException();
+			throw new RoverOutOfPlateauException(newRover.getCoordX() + " " + newRover.getCoordY() + " position is out of Plateau");
 		}
 		if (isGridBusy(newRover.getCoordX(), newRover.getCoordY())) {
-			throw new GridBusyByOtherRoverException();
+			throw new GridBusyByOtherRoverException(newRover.getCoordX() + " " + newRover.getCoordY() + " position is busy by other rover");
 		}
 		roversInPlateau.add(newRover);
 	}
@@ -52,5 +52,10 @@ public class Plateau {
 	
 	public int getSizeY() {
 		return sizeY;
+	}
+	
+	@Override
+	public String toString() {
+		return "Plateau size is: " + getSizeX() + " " + getSizeY();
 	}
 }

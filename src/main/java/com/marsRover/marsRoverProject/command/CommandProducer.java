@@ -21,7 +21,7 @@ public class CommandProducer {
 					commands.add(new MoveCommand());
 					break;
 				default:
-					throw new InvalidCommandException();
+					throw new InvalidCommandException(commandList.charAt(i) + " is a non-valid command");
 			}	
 		}
 		return commands;
