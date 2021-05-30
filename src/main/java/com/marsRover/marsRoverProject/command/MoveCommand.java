@@ -5,12 +5,21 @@ import com.marsRover.marsRoverProject.Rover;
 import com.marsRover.marsRoverProject.exception.GridBusyByOtherRoverException;
 import com.marsRover.marsRoverProject.exception.RoverOutOfPlateauException;
 
+/**
+ * Move Forward command class
+ * @author Maximo Librandi
+ *
+ */
 public class MoveCommand implements ICommand {
 
+	/** Constructor **/
 	public MoveCommand() {
 	
 	}
 	
+	/** Considering the current cardinal direction, the command will set the new position (X or Y) for the rover in action. 
+	 *  This will consider possible errors, like rover out of plateau or grid busy by other rover, when trying to move 
+	 *  **/
 	@Override
 	public void execute(Rover roverInMovement, Plateau currentPlateauState) throws RoverOutOfPlateauException, GridBusyByOtherRoverException {
 		int currentRoverCoordX = roverInMovement.getCoordX();

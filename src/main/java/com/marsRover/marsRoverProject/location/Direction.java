@@ -1,5 +1,11 @@
 package com.marsRover.marsRoverProject.location;
 
+/**
+ * Direction enumarion. As the values are constants that will be always the same, it is an ENUM.
+ * Each possible cardinal direction has the letter that represent it associated.
+ * @author Maximo Librandi
+ *
+ */
 public enum Direction {
 	NORTH('N'),
 	WEST('W'),
@@ -16,6 +22,7 @@ public enum Direction {
 		return representativeChar;
 	}
 	
+	/** Method to return the ENUM value according to the representative char **/
 	public static Direction getDirection(char representativeChar) {
 		if (representativeChar == Direction.NORTH.getRepresentativeChar()) {
 			return Direction.NORTH;

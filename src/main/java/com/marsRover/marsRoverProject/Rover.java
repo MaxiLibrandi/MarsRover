@@ -11,7 +11,11 @@ import com.marsRover.marsRoverProject.exception.InvalidRoverStartingPositionExce
 import com.marsRover.marsRoverProject.exception.RoverOutOfPlateauException;
 import com.marsRover.marsRoverProject.location.Direction;
 import com.marsRover.marsRoverProject.location.Position;
-
+/**
+ * Rover class with rover ID, position object, commands (both string and list of objects) and a boolean to know if it was already moved
+ * @author Maximo Librandi
+ *
+ */
 public class Rover {
 	private int id;
 	private boolean alreadyMoved;
@@ -19,6 +23,7 @@ public class Rover {
 	private String commandSequence;
 	private List<ICommand> commands;
 	
+	/** Constructor **/
 	public Rover(int id, String inputCoordX, String inputCoordY, String inputDirection) throws InvalidRoverStartingPositionException, InvalidRoverStartingDirectionException {
 		int coordX = Integer.parseInt(inputCoordX);
 		int coordY = Integer.parseInt(inputCoordY);
@@ -28,6 +33,7 @@ public class Rover {
 		this.position = new Position(coordX, coordY, direction);
 	}
 	
+	/** Method to move the rover inside the plateau, following the commands. **/
 	public void move(Plateau currentPlateauState) throws RoverOutOfPlateauException, GridBusyByOtherRoverException {
 		for(ICommand command : commands) {
 			command.execute(this, currentPlateauState);
@@ -35,6 +41,7 @@ public class Rover {
 		this.alreadyMoved = true;
 	}
 	
+	/** Method to know if the rover is in a specific grid **/
 	public boolean isInGrid(int coordX, int coordY) {
 		return position.getCoordX() == coordX && position.getCoordY() == coordY;
 	}
@@ -75,6 +82,7 @@ public class Rover {
 		position.setCompassDirection(direction);
 	}
 	
+	/** Method to set the command sequence and create the list of ICommands that represents the string **/
 	public void setCommandSequence(String commandSequence) throws InvalidCommandException {
 		this.commandSequence = commandSequence;
 		addCommands(CommandProducer.produceCommands(this.commandSequence));

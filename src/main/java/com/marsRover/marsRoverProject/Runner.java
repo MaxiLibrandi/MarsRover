@@ -13,6 +13,11 @@ import com.marsRover.marsRoverProject.exception.InvalidRoverStartingPositionExce
 import com.marsRover.marsRoverProject.exception.RoverOutOfPlateauException;
 import com.marsRover.marsRoverProject.parser.Parser;
 
+/**
+ * Runner class which contains the MAIN method to run the mission to Mars!
+ * @author Maximo Librandi
+ *
+ */
 public class Runner {
 private final static Logger LOGGER = LogManager.getLogger(Runner.class);
 
@@ -21,8 +26,8 @@ private final static Logger LOGGER = LogManager.getLogger(Runner.class);
 		LOGGER.info("Houston, execution starting...");
 		
 		String inputFilePath = "src/main/resources/input.txt";
-		Parser inputParser = new Parser(inputFilePath);
-		BufferedReader bufferedReader = new BufferedReader(new StringReader(inputParser.readFile()));
+		Parser inputParser = new Parser();
+		BufferedReader bufferedReader = new BufferedReader(new StringReader(inputParser.readFile(inputFilePath)));
 		
 		try {
 			String line = bufferedReader.readLine();

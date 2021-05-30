@@ -3,10 +3,16 @@ package com.marsRover.marsRoverProject.location;
 import com.marsRover.marsRoverProject.exception.InvalidRoverStartingDirectionException;
 import com.marsRover.marsRoverProject.exception.InvalidRoverStartingPositionException;
 
+/**
+ * Position class which consist of the coordinates and the direction. 
+ * @author Maximo Librandi
+ *
+ */
 public class Position {
 	private Coordinate coordinates;
 	private Direction compassDirection;
 	
+	/** Constructor, which validates the input values **/
 	public Position(int coordX, int coordY, char direction) throws InvalidRoverStartingPositionException, InvalidRoverStartingDirectionException {
 		if (coordX < 0 || coordY < 0) {
 			throw new InvalidRoverStartingPositionException(coordX + " " + coordY + " is a non-valid starting position");

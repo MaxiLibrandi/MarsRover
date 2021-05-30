@@ -8,15 +8,21 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Parser class that reads from file and return the content as string.
+ * @author Maximo Librandi
+ *
+ */
 public class Parser {
 	private final static Logger LOGGER = LogManager.getLogger(Parser.class);
-	private String filename;
 	
-	public Parser(String filename) {
-		this.filename = filename;
+	/** Constructor **/
+	public Parser() {
+		
 	}
 	
-	public String readFile() {
+	/** Method to read the file content using a Buffer reader and a String builder**/
+	public String readFile(String filename) {
 		BufferedReader bufferedReader = null;
 		String fileContent = null;
 		try {
