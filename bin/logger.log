@@ -1,0 +1,8 @@
+2021-05-30 12:16:47 INFO  Runner:21 - Houston, execution starting...
+2021-05-30 12:16:47 INFO  Runner:30 - Plateau size is: 5 10
+2021-05-30 12:16:47 INFO  Runner:37 - Rover ID: 1 | Position: 1 2 N | Commands: LMLMLMLMM | Moved: false
+2021-05-30 12:16:47 INFO  Runner:39 - Rover ID: 1 | Position: 1 3 N | Commands: LMLMLMLMM | Moved: true
+2021-05-30 12:16:47 INFO  Runner:37 - Rover ID: 2 | Position: 3 3 E | Commands: MMRMMRMRRM | Moved: false
+2021-05-30 12:16:47 INFO  Runner:39 - Rover ID: 2 | Position: 5 1 E | Commands: MMRMMRMRRM | Moved: true
+2021-05-30 12:16:47 INFO  Runner:37 - Rover ID: 3 | Position: 3 3 N | Commands: LM | Moved: false
+2021-05-30 12:16:47 INFO  Runner:39 - Rover ID: 3 | Position: 2 3 W | Commands: LM | Moved: true
