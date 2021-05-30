@@ -24,8 +24,8 @@ private final static Logger LOGGER = LogManager.getLogger(Runner.class);
 	public static void main(String[] args) {
 		
 		LOGGER.info("Houston, execution starting...");
-		
-		String inputFilePath = "src/main/resources/input.txt";
+
+		String inputFilePath = args[0];
 		Parser inputParser = new Parser();
 		BufferedReader bufferedReader = new BufferedReader(new StringReader(inputParser.readFile(inputFilePath)));
 		
