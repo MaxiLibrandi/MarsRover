@@ -1,7 +1,7 @@
 package com.marsRover.marsRoverProject.location;
 
 /**
- * Direction enumarion. As the values are constants that will be always the same, it is an ENUM.
+ * Direction enumeration. As the values are constants that will be always the same, it is an ENUM.
  * Each possible cardinal direction has the letter that represent it associated.
  * @author Maximo Librandi
  *

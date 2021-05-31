@@ -18,7 +18,7 @@ import com.marsRover.marsRoverProject.location.Position;
  */
 public class Rover {
 	private int id;
-	private boolean alreadyMoved;
+	private boolean executeCommands;
 	private Position position;
 	private String commandSequence;
 	private List<ICommand> commands;
@@ -29,7 +29,7 @@ public class Rover {
 		int coordY = Integer.parseInt(inputCoordY);
 		char direction = inputDirection.charAt(0);
 		this.id = id;
-		this.alreadyMoved = false;
+		this.executeCommands = false;
 		this.position = new Position(coordX, coordY, direction);
 	}
 	
@@ -38,7 +38,7 @@ public class Rover {
 		for(ICommand command : commands) {
 			command.execute(this, currentPlateauState);
 		}
-		this.alreadyMoved = true;
+		this.executeCommands = true;
 	}
 	
 	/** Method to know if the rover is in a specific grid **/
@@ -66,8 +66,12 @@ public class Rover {
 		return commandSequence;
 	}
 	
-	public boolean getAlreadyMoved() {
-		return alreadyMoved;
+	public boolean getExecuteCommands() {
+		return executeCommands;
+	}
+	
+	public List<ICommand> getCommands() {
+		return commands;
 	}
 		
 	public void setCoordX(int coordX) {
@@ -94,7 +98,19 @@ public class Rover {
 	
 	@Override
 	public String toString() {
-		return "Rover ID: " + getId() + " | Position: " + position.getStringPosition() + " | Commands: " + getCommandSequence() +  " | Moved: " + getAlreadyMoved();		
+		return "Rover ID: " + getId() + " | Position: " + position.getStringPosition() + " | Commands: " + getCommandSequence() +  " | Commands executed: " + getExecuteCommands();		
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null) {
+			return false;
+		}
+		if(!(obj instanceof Rover)) {
+			return false;
+		}
+		Rover rover = (Rover) obj;
+		return (this.getId() == rover.getId() && this.getCoordX() == rover.getCoordX() && this.getCoordY() == rover.getCoordY() && this.getDirection() == rover.getDirection());
 	}
 	
 }

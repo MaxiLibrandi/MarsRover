@@ -63,6 +63,10 @@ public class Plateau {
 		return sizeY;
 	}
 	
+	public List<Rover> getRoversInPlateau() {
+		return roversInPlateau;
+	}
+	
 	@Override
 	public String toString() {
 		return "Plateau size is: " + getSizeX() + " " + getSizeY();
