@@ -4,6 +4,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import com.marsRover.marsRoverProject.Rover;
 
+/**
+* UnitTest for the InvalidRoverStartingPositionException class.
+* Testing that the exception is thrown when creating a new Rover with negative position (in X-axis or Y-axis).
+* When a Rover is created with a position bigger than the Plateau's size, the exception will be handled by RoverOutOfPlateauException.
+* @author Maximo Librandi
+*
+*/
 class InvalidRoverStartingPositionExceptionTest {
 
 	@Test

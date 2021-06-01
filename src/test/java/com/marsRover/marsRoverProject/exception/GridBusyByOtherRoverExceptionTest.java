@@ -9,18 +9,24 @@ import org.junit.jupiter.api.Test;
 import com.marsRover.marsRoverProject.Plateau;
 import com.marsRover.marsRoverProject.Rover;
 
+/**
+ * UnitTest for the GridBusyByOtherRoverException class.
+ * Testing possible ways of doing the exception be thrown (when moving a rover or when adding a new rover to the plateau).
+ * @author Maximo Librandi
+ *
+ */
 class GridBusyByOtherRoverExceptionTest {
 	private final static Logger LOGGER = LogManager.getLogger(GridBusyByOtherRoverExceptionTest.class);
-	Plateau plateauInTest;
+	Plateau plateauUsedInTest;
 	Rover roverInPlateau; 
 	Rover newRover;
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		plateauInTest = new Plateau("5", "5");
+		plateauUsedInTest = new Plateau("5", "5");
 		roverInPlateau = new Rover(1, "3", "3", "N");
 		roverInPlateau.setCommandSequence("MRM");
-		plateauInTest.addRover(roverInPlateau);
+		plateauUsedInTest.addRover(roverInPlateau);
 	}
 	
 	@Test
@@ -33,14 +39,14 @@ class GridBusyByOtherRoverExceptionTest {
 			LOGGER.error(e);
 		}
 		Assertions.assertThrows(GridBusyByOtherRoverException.class, () -> {
-			plateauInTest.addRover(newRover);
+			plateauUsedInTest.addRover(newRover);
 		});	
 	}
 	
 	@Test
 	void testGridBusyExceptionWhileAddingRoverToPlateauAfterAnotherMoved() {
 		try {
-			roverInPlateau.move(plateauInTest);
+			roverInPlateau.move(plateauUsedInTest);
 			newRover = new Rover(2, "4", "4", "S");
 		} catch (RoverOutOfPlateauException e) {
 			LOGGER.error(e);
@@ -52,7 +58,7 @@ class GridBusyByOtherRoverExceptionTest {
 			LOGGER.error(e);
 		}
 		Assertions.assertThrows(GridBusyByOtherRoverException.class, () -> {
-			plateauInTest.addRover(newRover);
+			plateauUsedInTest.addRover(newRover);
 		});	
 	}
 	
@@ -69,7 +75,7 @@ class GridBusyByOtherRoverExceptionTest {
 			LOGGER.error(e);
 		}
 		Assertions.assertThrows(GridBusyByOtherRoverException.class, () -> {
-			newRover.move(plateauInTest);
+			newRover.move(plateauUsedInTest);
 		});	
 	}
 	
@@ -86,7 +92,7 @@ class GridBusyByOtherRoverExceptionTest {
 			LOGGER.error(e);
 		}
 		Assertions.assertThrows(GridBusyByOtherRoverException.class, () -> {
-			newRover.move(plateauInTest);
+			newRover.move(plateauUsedInTest);
 		});	
 	}
 	
@@ -103,7 +109,7 @@ class GridBusyByOtherRoverExceptionTest {
 			LOGGER.error(e);
 		}
 		Assertions.assertThrows(GridBusyByOtherRoverException.class, () -> {
-			newRover.move(plateauInTest);
+			newRover.move(plateauUsedInTest);
 		});	
 	}
 	
@@ -120,7 +126,7 @@ class GridBusyByOtherRoverExceptionTest {
 			LOGGER.error(e);
 		}
 		Assertions.assertThrows(GridBusyByOtherRoverException.class, () -> {
-			newRover.move(plateauInTest);
+			newRover.move(plateauUsedInTest);
 		});	
 	}
 }
