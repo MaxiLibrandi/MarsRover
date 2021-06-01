@@ -6,4 +6,7 @@
 .settings/
 
 target/
+
 /bin/
+
+src/main/resources/logger.log
